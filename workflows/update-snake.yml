@@ -1,0 +1,33 @@
+name: Update Snake SVG Daily
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  workflow_dispatch: # Allows manual triggering of the workflow
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Generate or update the SVG file
+      - name: Generate Snake SVG
+        run: |
+          # Assuming it's a script called `generate-snake.sh`
+          chmod +x ./scripts/generate-snake.sh
+          ./scripts/generate-snake.sh
+
+      # Step 3: Commit and push changes to the repository
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add github-contribution-grid-snake.svg
+          git commit -m "Daily update: Snake SVG"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
