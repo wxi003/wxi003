@@ -6,7 +6,7 @@ name: Update Snake SVG Daily
 on:
   # Run daily at midnight UTC
   schedule:
-    - cron: '30 3 * * *'
+    - cron: '00 21 * * *'
 
   # Allows you to manually trigger the workflow
   workflow_dispatch:
