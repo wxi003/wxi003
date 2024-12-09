@@ -10,7 +10,9 @@ on:
 
   # To manually trigger the workflow
   #workflow_dispatch:
-  
+
+permissions:
+  contents: write
 # Define the job(s)
 jobs:
   update-snake:
