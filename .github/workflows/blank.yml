@@ -9,7 +9,7 @@ on:
     - cron: '*/5 * * * *'
 
   # To manually trigger the workflow
-  #workflow_dispatch:
+  workflow_dispatch:
 
 permissions:
   contents: write
